@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-label="Happy ghost sticker">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- body -->
+  <path d="M30 140 Q 30 60, 100 60 Q 170 60, 170 140 L 170 170 Q 150 185, 130 170 Q 110 185, 90 170 Q 70 185, 50 170 L 30 140 Z" fill="#FFFFFF" filter="url(#glow)" stroke="#FF7518" stroke-width="3"/>
+  <!-- bright eyes -->
+  <circle cx="75" cy="100" r="10" fill="#2D1B4D"/>
+  <circle cx="125" cy="100" r="10" fill="#2D1B4D"/>
+  <circle cx="78" cy="97" r="3" fill="#FFFFFF"/>
+  <circle cx="128" cy="97" r="3" fill="#FFFFFF"/>
+  <!-- big smile -->
+  <path d="M78 132 Q 100 150, 122 132" fill="none" stroke="#FF7518" stroke-width="7" stroke-linecap="round"/>
+  <!-- tongue -->
+  <ellipse cx="100" cy="144" rx="6" ry="4" fill="#FF7518"/>
+  <!-- blush -->
+  <ellipse cx="62" cy="116" rx="13" ry="8" fill="#FFB52E" opacity="0.7"/>
+  <ellipse cx="138" cy="116" rx="13" ry="8" fill="#FFB52E" opacity="0.7"/>
+</svg>

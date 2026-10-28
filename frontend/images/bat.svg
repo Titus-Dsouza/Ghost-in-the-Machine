@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-label="Small bat">
+  <defs>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- wings -->
+  <path d="M30 110 Q 20 70, 70 75 Q 95 55, 100 95 Q 105 55, 130 75 Q 180 70, 170 110 Q 165 125, 100 105 Q 35 125, 30 110 Z" fill="#2D1B4D" filter="url(#blur)"/>
+  <!-- body -->
+  <ellipse cx="100" cy="105" rx="8" ry="14" fill="#2D1B4D"/>
+  <!-- ears -->
+  <path d="M92 94 L 88 84 L 96 90 Z M 108 94 L 112 84 L 104 90 Z" fill="#2D1B4D"/>
+  <!-- eyes -->
+  <circle cx="97" cy="102" r="2" fill="#F4F1FA"/>
+  <circle cx="103" cy="102" r="2" fill="#F4F1FA"/>
+</svg>

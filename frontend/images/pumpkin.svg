@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-label="Glowing jack-o'-lantern">
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- glow -->
+  <ellipse cx="100" cy="125" rx="75" ry="55" fill="#FF7518" opacity="0.35" filter="url(#glow)"/>
+  <!-- pumpkin body -->
+  <path d="M60 110 Q 60 50, 100 50 Q 140 50, 140 110 L 140 160 Q 125 175, 100 160 Q 75 175, 60 160 Z" fill="#FF7518" filter="url(#glow)" stroke="#B34700" stroke-width="4"/>
+  <path d="M100 50 Q 105 90, 100 110 Q 95 90, 100 50" fill="none" stroke="#B34700" stroke-width="4"/>
+  <path d="M100 50 Q 85 90, 100 110 Q 115 90, 100 50" fill="none" stroke="#B34700" stroke-width="4"/>
+  <!-- face -->
+  <path d="M78 100 Q 82 108, 78 116 M 122 100 Q 118 108, 122 116 M 90 130 Q 100 140, 110 130" fill="none" stroke="#3B1200" stroke-width="7" stroke-linecap="round"/>
+  <!-- stem -->
+  <path d="M100 40 Q 95 20, 105 12 Q 115 12, 110 30 Q 105 38, 100 40 Z" fill="#6A912A" stroke="#3B5210" stroke-width="3"/>
+</svg>

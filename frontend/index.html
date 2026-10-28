@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghost in the Machine</title>
+    <meta
+      name="description"
+      content="A haunted cartoon computer where a ghost of a forgotten programming language chats with you."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/frontend/css/style.css" />
+  </head>
+  <body>
+    <!-- Floating decorative stickers (SVG artwork) -->
+    <div class="decorations">
+      <img
+        src="/frontend/images/ghost.svg"
+        alt=""
+        class="deco ghost-deco top-left"
+        aria-hidden="true"
+      />
+      <img
+        src="/frontend/images/ghost-happy.svg"
+        alt=""
+        class="deco ghost-deco top-right"
+        aria-hidden="true"
+      />
+      <img
+        src="/frontend/images/pumpkin.svg"
+        alt=""
+        class="deco pumpkin-deco bottom-left"
+        aria-hidden="true"
+      />
+      <img
+        src="/frontend/images/bat.svg"
+        alt=""
+        class="deco bat-deco top-right"
+        aria-hidden="true"
+      />
+      <img
+        src="/frontend/images/bat.svg"
+        alt=""
+        class="deco bat-deco bottom-right"
+        aria-hidden="true"
+      />
+      <img
+        src="/frontend/images/bat.svg"
+        alt=""
+        class="deco bat-deco mid-left"
+        aria-hidden="true"
+      />
+      <img
+        src="/frontend/images/ghost.svg"
+        alt=""
+        class="deco ghost-deco bottom-right"
+        aria-hidden="true"
+      />
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="label">CLASSIFIED // HAUNTED SYSTEM</div>
+      <h1>GHOST IN THE MACHINE</h1>
+      <div class="tagline">Some code never truly dies.</div>
+      <p class="intro">
+        A forgotten programming language has awakened inside an abandoned
+        computer. Dare to speak with the ghost?
+      </p>
+      <div class="buttons">
+        <a href="#" class="btn" id="enterBtn">ENTER IF YOU DARE</a>
+        <a href="#" class="btn" id="summonBtn">SUMMON THE GHOST</a>
+      </div>
+      <!-- CSS ghost mascot -->
+      <div class="ghost">
+        <div class="eyes"><span></span><span></span></div>
+      </div>
+      <!-- Decorative SVGs -->
+      <svg class="spider-web top-left" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 10 C 100 150, 150 100, 190 190" stroke="var(--purple)" stroke-width="1" />
+      </svg>
+      <svg class="spider-web top-right" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M190 10 C 100 150, 50 100, 10 190" stroke="var(--purple)" stroke-width="1" />
+      </svg>
+      <!-- Simple moon -->
+      <svg class="moon" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="30" fill="var(--amber)" />
+      </svg>
+    </section>
+
+  <!-- Terminal Section -->
+  <section class="terminal" id="terminal">
+    <div class="title-bar">GHOST_OS // TERMINAL 13</div>
+    <div class="commands">
+      <button data-cmd="/help">/help</button>
+      <button data-cmd="/story">/story</button>
+      <button data-cmd="/oracle">/oracle</button>
+      <button data-cmd="/clear">/clear</button>
+    </div>
+    <div class="chat" aria-live="polite" id="chat"></div>
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Speak to the ghost..." aria-label="Chat input" />
+      <button id="sendBtn">Send</button>
+    </div>
+    <div id="status" class="status-indicator">Checking model…</div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story-panel" id="storyPanel">
+    <h2>TALES FROM THE CURSED CIRCUIT</h2>
+    <p class="subtitle">Some stories are written. Others are recovered from machines that should have stayed silent.</p>
+    <div class="story-ideas">
+      <button class="story-idea" data-id="1">The Last Commit</button>
+      <button class="story-idea" data-id="2">The Server That Never Slept</button>
+      <button class="story-idea" data-id="3">The Developer Who Deleted Tomorrow</button>
+      <button class="story-idea" data-id="4">The File That Reappeared</button>
+      <button class="story-idea" data-id="5">The Ghost in the Old Repository</button>
+    </div>
+    <div id="storyContent" class="story-content"></div>
+    <button id="newStoryBtn" style="display:none; margin-top:1rem;">Generate Another Story</button>
+  </section>
+
+  <!-- Oracle Section -->
+  <section class="oracle" id="oracle">
+    <h2>ASK THE FORGOTTEN ORACLE</h2>
+    <p>Ask about old programming languages, abandoned OSes, or mysterious code.</p>
+    <ul>
+      <li><button class="example-question" data-q="Why did COBOL survive for so long?">Why did COBOL survive for so long?</button></li>
+      <li><button class="example-question" data-q="Tell me about forgotten programming languages.">Tell me about forgotten programming languages.</button></li>
+      <li><button class="example-question" data-q="Explain a mysterious old operating system.">Explain a mysterious old operating system.</button></li>
+      <li><button class="example-question" data-q="What happens to abandoned code?">What happens to abandoned code?</button></li>
+    </ul>
+  </section>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
+
+    <!-- Terminal Section -->
+    <section class="terminal" id="terminal" aria-label="Haunted terminal chatbot">
+      <div class="title-bar">GHOST_OS // TERMINAL 13</div>
+      <div class="commands">
+        <button data-cmd="/help">/help</button>
+        <button data-cmd="/story">/story</button>
+        <button data-cmd="/oracle">/oracle</button>
+        <button data-cmd="/clear">/clear</button>
+      </div>
+      <div class="chat" aria-live="polite" id="chat"></div>
+      <div class="input-area">
+        <input type="text" id="userInput" placeholder="Speak to the ghost..." aria-label="Chat input" />
+        <button id="sendBtn">Send</button>
+      </div>
+      <div id="status" class="status-indicator">Checking the beyond…</div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-panel" id="storyPanel" aria-label="Spooky stories">
+      <h2>TALES FROM THE CURSED CIRCUIT</h2>
+      <p class="subtitle">
+        Some stories are written. Others are recovered from machines that should
+        have stayed silent.
+      </p>
+      <div class="story-ideas">
+        <button class="story-idea" data-id="1">The Last Commit</button>
+        <button class="story-idea" data-id="2">The Server That Never Slept</button>
+        <button class="story-idea" data-id="3">The Developer Who Deleted Tomorrow</button>
+        <button class="story-idea" data-id="4">The File That Reappeared</button>
+        <button class="story-idea" data-id="5">The Ghost in the Old Repository</button>
+      </div>
+      <div id="storyContent" class="story-content"></div>
+      <button id="newStoryBtn" style="display:none; margin-top:1rem;">
+        Generate Another Story
+      </button>
+    </section>
+
+    <!-- Oracle Section -->
+    <section class="oracle" id="oracle" aria-label="Forgotten oracle">
+      <h2>ASK THE FORGOTTEN ORACLE</h2>
+      <p>Ask about old programming languages, abandoned OSes, or mysterious code.</p>
+      <ul>
+        <li><button class="example-question" data-q="Why did COBOL survive for so long?">Why did COBOL survive for so long?</button></li>
+        <li><button class="example-question" data-q="Tell me about forgotten programming languages.">Tell me about forgotten programming languages.</button></li>
+        <li><button class="example-question" data-q="Explain a mysterious old operating system.">Explain a mysterious old operating system.</button></li>
+        <li><button class="example-question" data-q="What happens to abandoned code?">What happens to abandoned code?</button></li>
+      </ul>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about" aria-label="About">
+      <h2>ABOUT THIS HAUNTED MACHINE</h2>
+      <p>
+        <strong>Ghost in the Machine</strong> is a playful, cartoonish Halloween
+        chatbot. You are speaking with the ghost of a forgotten programming
+        language, powered by Google's Gemini API running entirely on the backend
+        — your messages are sent to Gemini, and the ghost's replies appear here
+        in the haunted terminal.
+      </p>
+      <p>
+        No Ollama, no local models, no secrets in the browser: the Gemini API
+        key stays safely on the server. Try /story for a spooky tale, or /oracle
+        for a question about old tech.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="footer">
+      <p>&copy; 2026 Ghost in the Machine. Some code never truly dies.</p>
+      <p>
+        Built with Flask + Google Gemini API &bull; Frontend served from
+        <code>/frontend/</code>
+      </p>
+    </footer>
+
+    <script src="/frontend/js/script.js"></script>
+  </body>
+</html>

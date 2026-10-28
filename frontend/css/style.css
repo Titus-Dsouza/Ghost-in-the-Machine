@@ -1,0 +1,486 @@
+/* Ghost in the Machine – Halloween theme */
+:root {
+  --bg-main: #080609;
+  --bg-sec: #151019;
+  --orange: #FF7518;
+  --amber: #FFB52E;
+  --purple: #7138A8;
+  --violet: #301344;
+  --ghost-white: #F7F0FF;
+  --green: #A8FF60;
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--ghost-white);
+  font-family: var(--font-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Outfit', sans-serif;
+  text-shadow: 2px 2px 4px var(--violet);
+}
+
+a { color: var(--orange); }
+
+/* ------------------- Floating decorations ------------------- */
+.decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.deco {
+  position: absolute;
+  filter: drop-shadow(0 0 12px rgba(113, 56, 168, 0.35));
+  user-select: none;
+}
+
+.ghost-deco { width: 90px; height: auto; }
+.pumpkin-deco { width: 110px; height: auto; }
+.bat-deco { width: 60px; height: auto; }
+
+.top-left   { top: 10%; left: 2%; animation: float 5s ease-in-out infinite; }
+.top-right  { top: 8%; right: 4%; animation: float 6.5s ease-in-out infinite reverse; }
+.bottom-left { bottom: 12%; left: 3%; animation: float 7s ease-in-out infinite; }
+.bottom-right { bottom: 8%; right: 6%; animation: float 5.5s ease-in-out infinite reverse; }
+.mid-left   { left: 1%; top: 45%; animation: float 8s ease-in-out infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(2deg); }
+}
+
+.pumpkin-deco {
+  animation: float 6s ease-in-out infinite, pumpkinGlow 3s ease-in-out infinite;
+}
+
+@keyframes pumpkinGlow {
+  0%, 100% { filter: drop-shadow(0 0 14px rgba(113, 56, 168, 0.35)) brightness(1); }
+  50% { filter: drop-shadow(0 0 26px rgba(255, 117, 24, 0.6)) brightness(1.2); }
+}
+
+.bat-deco {
+  animation: float 5s ease-in-out infinite, batFlap 0.35s steps(2) infinite;
+}
+
+@keyframes batFlap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.6); }
+}
+
+.spider-web { position: absolute; z-index: 0; opacity: 0.45; pointer-events: none; }
+.top-left.spider-web  { top: 2rem; left: 1rem; }
+.top-right.spider-web { top: 2rem; right: 1rem; }
+
+/* Haunted computer terminal */
+.terminal {
+  background: var(--bg-main);
+  border: 4px solid var(--purple);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  box-shadow: 0 0 20px var(--violet);
+}
+.terminal .title-bar {
+  background: var(--violet);
+  color: var(--ghost-white);
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 4px 4px 0 0;
+}
+.terminal .chat {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 1rem 0;
+  font-family: var(--font-mono);
+}
+.terminal .message {
+  margin: 0.5rem 0;
+}
+.terminal .message.user { color: var(--orange); }
+.terminal .message.ghost { color: var(--green); }
+.terminal .input-area {
+  display: flex;
+  gap: 0.5rem;
+}
+.terminal input {
+  flex: 1;
+  padding: 0.5rem;
+  background: var(--bg-sec);
+  border: 1px solid var(--purple);
+  color: var(--ghost-white);
+}
+.terminal button {
+  padding: 0.5rem 1rem;
+  background: var(--purple);
+  border: none;
+  color: var(--ghost-white);
+  cursor: pointer;
+}
+
+/* Quick command buttons */
+.commands {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+}
+.commands button {
+  background: var(--amber);
+  border: none;
+  color: var(--bg-main);
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+/* Story panel */
+.story-panel {
+  background: var(--bg-sec);
+  border: 2px solid var(--orange);
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  color: var(--ghost-white);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .hero .tagline { font-size: 1rem; }
+}
+
+/* ------------------- Hero Section ------------------- */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--bg-sec);
+  overflow: hidden;
+}
+
+.hero .label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--purple);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--orange);
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.hero h1::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, var(--purple), transparent);
+  mix-blend-mode: overlay;
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0,0) rotate(0deg); }
+  20% { transform: translate(-2px,2px) rotate(-0.5deg); }
+  40% { transform: translate(2px,-2px) rotate(0.5deg); }
+  60% { transform: translate(-2px,-2px) rotate(0deg); }
+  80% { transform: translate(2px,2px) rotate(0.5deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+.hero .tagline {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--ghost-white);
+}
+
+.hero .btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--orange);
+  background: transparent;
+  color: var(--orange);
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.hero .btn:hover {
+  background: var(--orange);
+  color: var(--bg-main);
+  transform: scale(1.05);
+}
+
+/* Simple cartoon ghost mascot (CSS illustration) */
+.ghost {
+  width: 120px;
+  height: 150px;
+  background: var(--ghost-white);
+  border-radius: 60px 60px 0 0;
+  position: relative;
+  margin: 2rem auto;
+  animation: float 4s ease-in-out infinite;
+  z-index: 1;
+}
+.ghost::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: var(--ghost-white);
+  border-radius: 0 0 60px 60px;
+}
+.ghost .eyes {
+  position: absolute;
+  top: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+.ghost .eyes span {
+  width: 20px; height: 30px;
+  background: var(--violet);
+  border-radius: 50%;
+}
+
+/* ------------------- Haunted computer terminal ------------------- */
+.terminal {
+  background: var(--bg-main);
+  border: 4px solid var(--purple);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  box-shadow: 0 0 20px var(--violet);
+  position: relative;
+  z-index: 1;
+}
+.terminal .title-bar {
+  background: var(--violet);
+  color: var(--ghost-white);
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 4px 4px 0 0;
+}
+.terminal .chat {
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 1rem 0;
+  font-family: var(--font-mono);
+  padding-right: 0.5rem;
+}
+.terminal .message {
+  margin: 0.5rem 0;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  background: var(--bg-sec);
+  border-left: 3px solid transparent;
+}
+.terminal .message.user {
+  color: var(--orange);
+  border-left-color: var(--orange);
+}
+.terminal .message.ghost {
+  color: var(--green);
+  border-left-color: var(--green);
+}
+.terminal .message.note {
+  font-size: 0.75rem;
+  opacity: 0.65;
+  margin-left: 0.5rem;
+  display: inline-block;
+}
+.terminal .input-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.terminal input {
+  flex: 1;
+  padding: 0.5rem;
+  background: var(--bg-sec);
+  border: 1px solid var(--purple);
+  color: var(--ghost-white);
+  border-radius: 4px;
+}
+.terminal input:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+.terminal button {
+  padding: 0.5rem 1rem;
+  background: var(--purple);
+  border: none;
+  color: var(--ghost-white);
+  cursor: pointer;
+  border-radius: 4px;
+}
+.terminal button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Loading indicator */
+.typing {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Quick command buttons */
+.commands {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+}
+.commands button {
+  background: var(--amber);
+  border: none;
+  color: var(--bg-main);
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Status indicator */
+.status-indicator {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  text-align: center;
+  min-height: 1.2rem;
+}
+
+/* ------------------- Story panel ------------------- */
+.story-panel {
+  background: var(--bg-sec);
+  border: 2px solid var(--orange);
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  color: var(--ghost-white);
+  position: relative;
+  z-index: 1;
+}
+.story-panel h2 {
+  margin-top: 0;
+  color: var(--orange);
+}
+.story-panel .subtitle {
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+.story-ideas {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.story-ideas button {
+  background: var(--bg-sec);
+  border: 1px solid var(--purple);
+  color: var(--ghost-white);
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.story-ideas button:hover {
+  background: var(--purple);
+}
+.story-content {
+  margin-bottom: 1rem;
+  white-space: pre-line;
+  font-family: var(--font-mono);
+}
+
+/* ------------------- Oracle section ------------------- */
+.oracle {
+  background: var(--bg-sec);
+  border: 2px solid var(--purple);
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  color: var(--ghost-white);
+  position: relative;
+  z-index: 1;
+}
+.oracle h2 { margin-top: 0; color: var(--amber); }
+.oracle ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.oracle li { margin: 0; }
+.oracle .example-question {
+  background: var(--bg-sec);
+  border: 1px solid var(--purple);
+  color: var(--ghost-white);
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.oracle .example-question:hover { background: var(--purple); }
+
+/* ------------------- About section ------------------- */
+.about {
+  background: var(--bg-sec);
+  border: 2px solid var(--purple);
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  color: var(--ghost-white);
+  position: relative;
+  z-index: 1;
+}
+.about h2 { margin-top: 0; color: var(--orange); }
+.about p { opacity: 0.9; }
+.about code {
+  background: var(--bg-main);
+  padding: 0.1rem 0.3rem;
+  border: 1px solid var(--purple);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  color: var(--amber);
+}
+
+/* ------------------- Footer ------------------- */
+.site-footer {
+  background: var(--violet);
+  color: var(--ghost-white);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-top: 2rem;
+}
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .hero .tagline { font-size: 1rem; }
+  .terminal { margin: 1rem auto; padding: 0.75rem; }
+  .hero { padding: 2.5rem 1rem; }
+  .deco.ghost-deco { width: 60px; }
+  .deco.pumpkin-deco { width: 80px; }
+  .deco.bat-deco { width: 45px; }
+}
